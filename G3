@@ -58,7 +58,7 @@ local deCheck = function(data)
 	end
 end
 
-deCheck({key = "ddefd75de03e6048b6936f3f4212df"})
+deCheck({key = _G.keyaccess_celebrial})
 return valid_data_index
 
 -- Coordinated Universal Time (UTC) ddefd75de03e6048b6936f3f4212df
