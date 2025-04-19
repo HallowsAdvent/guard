@@ -35,23 +35,30 @@ local deCheck = function(data)
 	x0["m"] = x1.month
 	x0["yd"] = x1.yday
 
-	local key = Tags[GetValidIndex(data.key)]
+    local key
+
+    for d, g in Tags do
+	    if data.key == GetValidIndex(d) then
+            key = g
+        end
+    end
+	
 	if key ~= nil then
 		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
-		if (key.D.yd < x0.yd) then
+		if (key.D.yd > x0.yd) then
 			local gT = (key.D.yd-x0.yd)
 			_G.daysLeft_Core = gT
 
-			ReturnInvalidIndex(GetValidIndex(string_pi.x0), "", gT, crypt_id)
+			ReturnInvalidIndex(GetValidIndex(string_pi.x1), "", gT, crypt_id)
 		else
-			ReturnInvalidIndex(GetValidIndex(string_pi.x1), GetValidIndex(string_pi.x3))
+			ReturnInvalidIndex(GetValidIndex(string_pi.x0), GetValidIndex(string_pi.x3))
 		end 
 	else
 		ReturnInvalidIndex(GetValidIndex(string_pi.x2), GetValidIndex(string_pi.x3))
 	end
 end
 
-deCheck({key = _G.keyaccess_celebrial})
-return valid_data_index
+deCheck({key = "ddefd75de03e6048b6936f3f4212df"})
+return ReturnInvalidIndex
 
 -- Coordinated Universal Time (UTC) ddefd75de03e6048b6936f3f4212df
