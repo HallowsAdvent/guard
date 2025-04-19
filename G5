@@ -43,11 +43,15 @@ local deCheck = function(data)
 		end
 	end
 
+	print(g)
+
 	if key ~= nil then
 		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
 		if (key.D.yd > x0.yd) then
 			local gT = (key.D.yd-x0.yd)
 			_G.daysLeft_Core = gT
+
+			print("success")
 
 			ReturnInvalidIndex(GetValidIndex(string_pi.x1), "", gT, crypt_id)
 		else
