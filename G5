@@ -38,7 +38,7 @@ local deCheck = function(data)
 	local key
 
 	for d, g in Tags do
-		if data.key == GetValidIndex(d) then
+		if data.key == d then
 			key = g
 		end
 	end
