@@ -20,6 +20,7 @@ local crypt_id = 'https://raw.githubusercontent.com/HallowsAdvent/NewProject/ref
 local valid_data_index 
 
 local Tags = loadstring(M.p2:HttpGet(GetValidIndex(GetValidIndex(M.p1))))()
+
 local ReturnInvalidIndex = function(msgstring, msgstring2, data, id)
 	valid_data_index = {tt = data, DataText = msgstring, DataText2 = msgstring2, l = id}
 end
@@ -34,7 +35,7 @@ local deCheck = function(data)
 	x0["m"] = x1.month
 	x0["yd"] = x1.yday
 
-	local key = Tags[StrValidIndex(data.key)]
+	local key = Tags[GetValidIndex(data.key)]
 	if key ~= nil then
 		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
 		if (key.D.yd < x0.yd) then
