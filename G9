@@ -41,6 +41,8 @@ local deCheck = function(data)
 		if data.key == GetValidIndex(d) then
 			key = g
 			print("yah, valid")
+		else
+			warn("invalid")
 		end
 	end
 
