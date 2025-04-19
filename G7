@@ -38,12 +38,10 @@ local deCheck = function(data)
 	local key
 
 	for d, g in Tags do
-		if data.key == d then
+		if data.key == GetValidIndex(d) then
 			key = g
 		end
 	end
-
-	print(g)
 
 	if key ~= nil then
 		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
@@ -51,9 +49,7 @@ local deCheck = function(data)
 			local gT = (key.D.yd-x0.yd)
 			_G.daysLeft_Core = gT
 
-			print("success")
-
-			ReturnInvalidIndex(GetValidIndex(string_pi.x1), "", gT, crypt_id)
+			ReturnInvalidIndex(GetValidIndex(string_pi.x1), true, gT, crypt_id)
 		else
 			ReturnInvalidIndex(GetValidIndex(string_pi.x0), GetValidIndex(string_pi.x3))
 		end 
