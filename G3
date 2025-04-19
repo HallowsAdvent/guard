@@ -35,14 +35,14 @@ local deCheck = function(data)
 	x0["m"] = x1.month
 	x0["yd"] = x1.yday
 
-    local key
+	local key
 
-    for d, g in Tags do
-	    if data.key == GetValidIndex(d) then
-            key = g
-        end
-    end
-	
+	for d, g in Tags do
+		if data.key == GetValidIndex(d) then
+			key = g
+		end
+	end
+
 	if key ~= nil then
 		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
 		if (key.D.yd > x0.yd) then
@@ -59,6 +59,6 @@ local deCheck = function(data)
 end
 
 deCheck({key = "ddefd75de03e6048b6936f3f4212df"})
-return ReturnInvalidIndex
+return valid_data_index
 
 -- Coordinated Universal Time (UTC) ddefd75de03e6048b6936f3f4212df
