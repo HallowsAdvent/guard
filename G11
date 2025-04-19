@@ -40,7 +40,6 @@ local deCheck = function(data)
 	for d, g in Tags do
 		if data.key == d then
 			key = g
-			print("yah, valid")
 		end
 	end
 
