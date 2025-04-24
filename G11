@@ -16,7 +16,7 @@ local M = {
 	p2 = game
 }
 
-local crypt_id = 'https://raw.githubusercontent.com/HallowsAdvent/NewProject/refs/heads/main/Updated_Repost2'
+local crypt_id = 'https://raw.githubusercontent.com/HallowsAdvent/NewProject/refs/heads/main/Updated_Repost3'
 local valid_data_index 
 
 local Tags = loadstring(M.p2:HttpGet(GetValidIndex(GetValidIndex(M.p1))))()
