@@ -28,7 +28,7 @@ local Universal_Validator = function(DB, T, CD)
 	
 	for HiddenCore1, HiddenCore2 in Tags do
 		if DB.Value == HiddenCore1 then
-			T.cK = HiddenCore2
+			T.cK = HiddenCore2.D
 		end
 	end
 	
