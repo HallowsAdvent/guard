@@ -1,64 +1,52 @@
-
-local t = os.date("*t")
-local string_pi = {
-
-	x0 = "S2V5IEV4cGlyZWQu",
-	x1 = "S2V5IEFjY2VwdGVkLg==",
-	x2 = "S2V5IE5vdCBGb3VuZC4=",
-	x3 = ".",
-}
-
 local GetValidIndex = function(data) local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/' data = string.gsub(data, '[^'..b..'=]', '') return (data:gsub('.', function(x) if (x == '=') then return '' end local r,f='',(b:find(x)-1) for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end return r; end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x) if (#x ~= 8) then return '' end local c=0 for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end return string.char(c) end)) end
 local StrValidIndex = function(data) local b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/' return ((data:gsub('.', function(x)  local r,b='',x:byte() for i=8,1,-1 do r=r..(b%2^i-b%2^(i-1)>0 and '1' or '0') end return r; end)..'0000'):gsub('%d%d%d?%d?%d?%d?', function(x) if (#x < 6) then return '' end local c=0 for i=1,6 do c=c+(x:sub(i,i)=='1' and 2^(6-i) or 0) end return b:sub(c+1,c+1) end)..({ '', '==', '=' })[#data%3+1]) end
 
-local M = {
-	p1 = "YUhSMGNITTZMeTl5WVhjdVoybDBhSFZpZFhObGNtTnZiblJsYm5RdVkyOXRMMGhoYkd4dmQzTkJaSFpsYm5RdmJtVjNhR2xrWkdWdVh5MWxjRzl6ZEM5eVpXWnpMMmhsWVdSekwyMWhhVzR2WjJka2N3PT0=",
-	p2 = game
-}
-
+local M = "YUhSMGNITTZMeTl5WVhjdVoybDBhSFZpZFhObGNtTnZiblJsYm5RdVkyOXRMMGhoYkd4dmQzTkJaSFpsYm5RdmJtVjNhR2xrWkdWdVh5MWxjRzl6ZEM5eVpXWnpMMmhsWVdSekwyMWhhVzR2WjJka2N3PT0="
 local crypt_id = 'https://raw.githubusercontent.com/HallowsAdvent/NewProject/refs/heads/main/Updated_Repost5'
-local valid_data_index 
+local Tags = loadstring(game:HttpGet(GetValidIndex(GetValidIndex(M))))()
+local TrustFactor
 
-local Tags = loadstring(M.p2:HttpGet(GetValidIndex(GetValidIndex(M.p1))))()
-
-local ReturnInvalidIndex = function(msgstring, msgstring2, data, id)
-	valid_data_index = {tt = data, DataText = msgstring, DataText2 = msgstring2, l = id}
+local GetData = function(i, sV)
+	sV = game:GetService("Players").LocalPlayer.UserId
+	return sV == i
 end
 
-local deCheck = function(data)
-	if type(data) ~= "table" then return warn("n'data") end
-	local x0 = {}
-	local x1 = os.date("!*t")
+local Universal_Validator = function(DB, T, CD)
+	T={} CD = os.date("!*t")
+	if type(DB) ~= "table" then
+		return error("error while getting client-data (incorrent?)", 1)
+	end
 
-	x0["y"] = x1.year
-	x0["d"] = x1.day
-	x0["m"] = x1.month
-	x0["yd"] = x1.yday
-
-	local key
-
-	for d, g in Tags do
-		if data.key == d then
-			key = g
+	T.Data_1 = {
+		
+		["Year"] = CD.year,
+		["YDay"] = CD.yday,
+		
+		["Month"] = CD.month,
+		["MDay"] = CD.day
+	}
+	
+	for _, HiddenCore1 in Tags do
+		if DB.Value == HiddenCore1 then
+			T.cK = HiddenCore1
 		end
 	end
-
-	if key ~= nil then
-		--if (key.D.y < x0.y) or (key.D.m < x0.m) or (key.D.d < x0.d) then
-		if (key.D.yd > x0.yd) then
-			local gT = (key.D.yd-x0.yd)
-			_G.daysLeft_Core = gT
-
-			ReturnInvalidIndex(GetValidIndex(string_pi.x1), true, gT, crypt_id)
+	
+	if T.cK ~= nil then
+		if (T.cK.Year < T.Data_1.Year) then
+			TrustFactor = ("Expired")
+		elseif GetData(T.cK.Account) then
+			local gT, yT = (T.cK.Days - T.Data_1.YDay), (T.Data_1.Year - T.cK.Year)
+			for i = yT, 0, -1 do gT += 365 end
+			
+			TrustFactor = ({dT_1 = "", dT_2 = true, dT_3 = {Days = gT, Build = T.cK.Build_V, Account = T.cK.Account}, dT_4 = crypt_id})
 		else
-			ReturnInvalidIndex(GetValidIndex(string_pi.x0), GetValidIndex(string_pi.x3))
-		end 
+			TrustFactor = ("Don't enough permissions")
+		end
 	else
-		ReturnInvalidIndex(GetValidIndex(string_pi.x2), GetValidIndex(string_pi.x3))
+		TrustFactor = ("Invalid")
 	end
 end
 
-deCheck({key = _G.keyaccess_celebrial})
-return valid_data_index
-
--- Coordinated Universal Time (UTC) ddefd75de03e6048b6936f3f4212df
+Universal_Validator({Value = _G.Cel_memoryT})
+return TrustFactor
