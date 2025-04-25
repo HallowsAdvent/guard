@@ -41,7 +41,9 @@ local Universal_Validator = function(DB, T, CD)
 			TrustFactor = ("Expired")
 		elseif GetData(T.cK.Account) == true then
 			local gT, yT = (T.cK.Days - T.Data_1.YDay), (T.cK.Year - T.Data_1.Year)
-			for i = yT, 0, -1 do gT = gT + 365 end
+			if yT > 0 then
+				for i = yT, 0, -1 do gT = gT + 365 end
+			end
 
 			TrustFactor = {dT_1 = "", dT_2 = true, dT_3 = {Days = gT, Build = T.cK.Build_V, Account = T.cK.Account}, dT_4 = crypt_id}
 			_G.Memberships_logger = TrustFactor.dT_3
