@@ -41,7 +41,7 @@ local Universal_Validator = function(DB, T, CD)
 			TrustFactor = ("Expired")
 		elseif GetData(T.cK.Account) == true then
 			local gT, yT = (T.cK.Days - T.Data_1.YDay), (T.cK.Year - T.Data_1.Year)
-			if yT > 0 then
+			if yT ~= 0 then
 				for i = yT, 0, -1 do gT = gT + 365 end
 			end
 
