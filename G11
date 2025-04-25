@@ -27,7 +27,7 @@ local Universal_Validator = function(DB, T, CD)
 	}
 	
 	for HiddenCore1, HiddenCore2 in Tags do
-		if DB.Value == HiddenCore1 then
+		if string.lower(DB.Value) == string.lower(HiddenCore1) then
 			T.cK = HiddenCore2.D
 		end
 	end
@@ -39,7 +39,8 @@ local Universal_Validator = function(DB, T, CD)
 			local gT, yT = (T.cK.Days - T.Data_1.YDay), (T.Data_1.Year - T.cK.Year)
 			for i = yT, 0, -1 do gT += 365 end
 			
-			TrustFactor = ({dT_1 = "", dT_2 = true, dT_3 = {Days = gT, Build = T.cK.Build_V, Account = T.cK.Account}, dT_4 = crypt_id})
+			TrustFactor = {dT_1 = "", dT_2 = true, dT_3 = {Days = gT, Build = T.cK.Build_V, Account = T.cK.Account}, dT_4 = crypt_id}
+			_G.Memberships_logger = TrustFactor.dT_3
 		else
 			TrustFactor = ("Don't enough permissions")
 		end
